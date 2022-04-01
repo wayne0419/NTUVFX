@@ -1,13 +1,16 @@
+from PIL import Image
+import piexif
 import cv2
 import numpy as np
-import utilities
 
-img = cv2.imread("Images\Memorial_SourceImages\memorial0064.png")  # BGR
- 
-print(type(img))
-print(img.shape)
+hdr_path = "hdr.hdr"
 
-utilities.show_image(img)
+hdr = cv2.imread(hdr_path, flags=cv2.IMREAD_ANYDEPTH)
+tonemap1 = cv2.createTonemap(gamma=2.2)
+res_debevec = tonemap1.process(hdr.copy())
+res_debevec_8bit = np.clip(res_debevec*255, 0, 255).astype('uint8')
+cv2.imwrite("test2.png", res_debevec_8bit)
+
 
 
 
