@@ -34,11 +34,11 @@
 
 The algorithm being implemented in this project is Debevec's Method。
 
-![img](./images/debevec.png)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/debevec.png?raw=true)
 
 After solving the gunction g in the above formula, I can use the below formula to calculate the radiance of every pixel.
 
-![img](./images/debevec2.png)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/debevec2.png?raw=true)
 
 This has to be done for every channel: R,G,B. In the end, I will get the radiance map for all three channels, and after stacking them together, I can get the HDR.
 
@@ -53,9 +53,9 @@ But the result are almost the same.
 
 Forward, I throw these pixels inside `lib.solve_debevec` to calculate the g function for R,G,B channels: `g_r`, `g_g`, `g_b`, and then derive the radiance map for each channel: `irradiance_r`, `irradiance_g`, `irradiance_b`. By stacking them, I get the HDR image.
 
-To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. 
+To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. Various combination of `key a` and `L_white` are experimented with.
 
-## 結果
+## Result
 
 下面是我們拍攝的不同曝光時間的照片。
 
