@@ -79,11 +79,11 @@ Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)ï
 
 ## Experiments
 
-### Using Different Tone-mapping parameters(a, L_white)
+### Using Different Tone-mapping Parameters(a, L_white)
 
 |             | a=0.18      | a=0.3     | a=0.4     | a=0.5     | a=0.75    |
 | --------    | ----------- | ----------| ----------| ----------| ----------|
-| L_white=0.5 |             |           |           |           |           |
+| L_white=0.5 | [img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.18_white=0.5.png?raw=true) | [img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.3_white=0.5.png?raw=true) | [img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.4_white=0.5.png?raw=true) | [img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.5_white=0.5.png?raw=true) | [img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.0.75_white=0.5.png?raw=true) |
 | L_white=1.5 |           |           |           |           |           |
 | L_white=3   |           |           |           |           |           |
 | L_white=inf |           |           |           |           |           |
