@@ -40,9 +40,11 @@ After solving the gunction g in the above formula, I can use the below formula t
 
 ![img](./images/debevec2.png)
 
-This has to be done for every channel: R,G,B. In the end, we will get the radiance map for all three channels, and after stacking them together, we can get the HDR.
+This has to be done for every channel: R,G,B. In the end, I will get the radiance map for all three channels, and after stacking them together, I can get the HDR.
 
-## 說明
+## Implementation Details
+
+
 
 我們大概拍了 9 張照片，其中 exposure 是每張照片兩倍的遞增。拿到 jpg 檔以後可以用 `PIL` 裡面的含式去讀 jpg 檔的 metadata 拿到 exposure （ see `lib.hdr.get_labeled_exif`）。這是 Debevec's Method 裡面的 delta t。
 
