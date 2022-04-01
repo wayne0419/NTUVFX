@@ -54,7 +54,7 @@ def get_photo_metadata(file_name):
 
 	return metadata
 
-def read_exposure_time(file_dir, file_num, exposure_filename, file_extension=".png"):
+def read_exposure_time(file_dir, file_num, exposure_filename, file_extension=".jpg"):
 	exposure_time_list = []
 	if exposure_filename == None:
 		for i in range(file_num):
@@ -75,10 +75,6 @@ def read_photoes(file_dir, file_num, file_extension=".png", exposure_filename = 
 	photo_list = []
 
 	# Read exposure time
-	# # test
-	# k = 1	
-	# dt_list = [k/0.03125, k/0.0625, k/0.125, k/0.25, k/0.5, k/1, k/2, k/4, k/8, k/16, k/32, k/64, k/128, k/256, k/512, k/1024]
-	# #################################################################
 	dt_list = read_exposure_time(file_dir, file_num, exposure_filename, file_extension)
 	# Read image
 	img_list = []
@@ -123,7 +119,6 @@ def pick_pixels(photo_list, channel, number_picked_pixels = 25):
 			
 
 	pixel_list.sort(key=lambda pixel : pixel.luminosity)
-	# print(len(pixel_list))	# test
 	picked_pixels = []
 	# for i in range(number_picked_pixels):
 	# 	picked_pixels.append( pixel_list[ int( (len(pixel_list)-1)*i/(number_picked_pixels-1) ) ] )

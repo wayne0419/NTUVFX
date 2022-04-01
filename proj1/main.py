@@ -5,10 +5,19 @@ import cv2
 from utilities import show_image
 import matplotlib.pyplot as plt
 import os
+import argparse
 
-destination_dir = "Test_result/night_street_hdr"
+parser = argparse.ArgumentParser()
+parser.add_argument('--input_dir', type=str, default="../data/")
+parser.add_argument('--image_extension', type=str, default=".jpg")
+parser.add_argument('--image_num', type=int)
+parser.add_argument('--exposure_path', type=str, default=None)
+parser.add_argument('--output_dir', type=str, default="..")
+config = parser.parse_args()
 
-photo_list = lib.read_photoes(file_dir="Images/night_street", file_num=14, file_extension=".jpg", exposure_filename="Images/night_street/exposures.txt", scale=1, scale_method=cv2.INTER_LANCZOS4)
+destination_dir = config.output_dir
+
+photo_list = lib.read_photoes(file_dir=config.input_dir, file_num=config.image_num, file_extension=config.image_extension, exposure_filename=config.exposure_path, scale=1, scale_method=cv2.INTER_LANCZOS4)
 picked_pixels_b = lib.pick_pixels(photo_list, channel=0, number_picked_pixels=400)
 picked_pixels_g = lib.pick_pixels(photo_list, channel=1, number_picked_pixels=400)
 picked_pixels_r = lib.pick_pixels(photo_list, channel=2, number_picked_pixels=400)
@@ -33,7 +42,7 @@ irradiance_g = lib.merge_irradiance(photo_list, g_g, 1)
 irradiance_r = lib.merge_irradiance(photo_list, g_r, 2)
 
 irradiance = np.stack((irradiance_b,irradiance_g,irradiance_r), axis=2)
-cv2.imwrite(destination_dir + "hdr.hdr", irradiance)
+cv2.imwrite(destination_dir + "/hdr.hdr", irradiance)
 
 for a in [0.18, 0.3, 0.4, 0.5, 0.75]:
 	for L_white in [0.5, 1, 1.5, 3, inf]:

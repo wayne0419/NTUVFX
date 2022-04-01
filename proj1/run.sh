@@ -1,0 +1,1 @@
+python main.py --input_dir Images/night_street --image_extension .jpg --image_num 14 --exposure_path Images/night_street/exposures.txt --output_dir Test_result/
