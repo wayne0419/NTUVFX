@@ -53,16 +53,19 @@ But the result are almost the same.
 
 Forward, I throw these pixels inside `lib.solve_debevec` to calculate the g function for R,G,B channels: `g_r`, `g_g`, `g_b`, and then derive the radiance map for each channel: `irradiance_r`, `irradiance_g`, `irradiance_b`. By stacking them, I get the HDR image.
 
-To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. Various combination of `key a` and `L_white` are experimented with.
+To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. Various combination of `key a` and `L_white` have been experimented with.
 
 ## Result
 
-下面是我們拍攝的不同曝光時間的照片。
+Below are the input images of different exposure time.
 
-| ![img](./images/shifted/IMG_6538.JPG) | ![img](./images/shifted/IMG_6539.JPG) | ![img](./images/shifted/IMG_6540.JPG) |
+| ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/0.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/1.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/2.jpg?raw=true) |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![img](./images/shifted/IMG_6541.JPG) | ![img](./images/shifted/IMG_6542.JPG) | ![img](./images/shifted/IMG_6543.JPG) |
-| ![img](./images/shifted/IMG_6544.JPG) | ![img](./images/shifted/IMG_6545.JPG) | ![img](./images/shifted/IMG_6546.JPG) |
+| ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/3.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/4.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/5.jpg?raw=true) |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/6.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/7.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/58.jpg?raw=true) |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/9.jpg?raw=true) |  |  |
 
 我們選用的參數是 lambda = 20，然後 weighting function 就是 linear（就是論文中提到的函式，後面會跟我們自己寫的 sin, guassian weighting 函式作比較）。
 
