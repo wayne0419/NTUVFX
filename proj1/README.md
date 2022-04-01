@@ -57,7 +57,7 @@ To tone-map the HDR image, I implement the Reinhard's Method but only the global
 
 ## Result
 
-Below are the input images of different exposure time.
+Below are the 10 input images with different exposure time.
 
 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/0.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/1.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/2.jpg?raw=true) |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
@@ -65,34 +65,31 @@ Below are the input images of different exposure time.
 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/6.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/7.jpg?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/8.jpg?raw=true) |
 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/9.jpg?raw=true) |
 
-我們選用的參數是 lambda = 20，然後 weighting function 就是 linear（就是論文中提到的函式，後面會跟我們自己寫的 sin, guassian weighting 函式作比較）。
+The parameter I choose to use 
+- lambda = 20
+- weighting function : linear-hat
 
-最終得到的不同 channel 的 mapping function g，可以看到幾乎是完全吻合，解出了同一個 g：
+The below plot shows the mapping function g I get for each channel. Can see they are quite matching too each other.
 
-![img](./results/20.0_linear_align/exposure.png)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)
 
-Tone mapped 的影像：
+Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)：
 
-![img](./results/20.0_linear_align/result.png)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.5_white=inf.png?raw=true)
 
-## 實驗
+## Experiments
 
-### 使用不同 Weighting Function
+### Using Different Tone-mapping parameters(a, L_white)
 
-在 `lib.hat_functions` 中我們定義了一些對於 0 - 255 pixel 值的 weighting function，圖示如下：
+|             | a=0.18      | a=0.3     | a=0.4     | a=0.5     | a=0.75    |
+| --------    | ----------- | ----------| ----------| ----------| ----------|
+| L_white=0.5 |             |           |           |           |           |
+| L_white=1.5 |           |           |           |           |           |
+| L_white=3   |           |           |           |           |           |
+| L_white=inf |           |           |           |           |           |
 
-![img](./images/hat.png)
 
-實驗中，我們固定 lambda = 20，並使用 Mantuik '06 的演算法來 tone mapping，觀察 weighting function 對最終結果的影響，並把沒有 weighting 的當成對照組。
 
-|          | g                                          | Tone mapped                              |
-| -------- | ------------------------------------------ | ---------------------------------------- |
-| None     | ![img](https://github.com/bchao1/High-Dynamic-Range-Imaging/blob/master/tests/20.0_none/exposure.png?raw=true)     | ![img](https://github.com/bchao1/High-Dynamic-Range-Imaging/blob/master/tests/20.0_none/result.png?raw=true)     |
-| Linear   | ![img](./tests/20.0_linear/exposure.png)   | ![img](./tests/20.0_linear/result.png)   |
-| Gaussian | ![img](./tests/20.0_gaussian/exposure.png) | ![img](./tests/20.0_gaussian/result.png) |
-| Sin      | ![img](./tests/20.0_sin/exposure.png)      | ![img](./tests/20.0_sin/result.jpg)      |
-
-其實結果並沒有差非常多。
 
 ###  使用不同 Lambda
 
