@@ -19,7 +19,7 @@
 	- ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
 - Execution methods:
 	1. Execute `./code/run.sh` while in `./code`.
-	2. Run ./code/main.py with arguments:
+	2. Run `./code/main.py` with arguments:
 
 |  Argument  |                         Explanation                          | Required |
 | :--------: | :----------------------------------------------------------: | :------: |
