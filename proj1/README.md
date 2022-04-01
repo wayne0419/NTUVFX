@@ -94,7 +94,7 @@ To observe the influence of different lambda on the result. I make the tone-mapp
 
 We can see that as lambda goes up, the mapping function g become smoother, but the tone-mapped results have almost no difference.
 
-### Using Different Tone-mapping Parameters(a, L_white)
+### Using Different Parameters(a, L_white) For Reinhard's Tone-mapping Method
 
 |             | a=0.18      | a=0.3     | a=0.4     | a=0.5     | a=0.75    |
 | --------    | ----------- | ----------| ----------| ----------| ----------|
