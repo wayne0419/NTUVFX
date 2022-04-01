@@ -66,12 +66,12 @@ Below are the 10 input images with different exposure time.
 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/9.jpg?raw=true) |
 
 The parameter I choose to use 
-- lambda = 400
+- lambda = 100
 - weighting function : linear-hat
 
 The below plot shows the mapping function g I get for each channel. Can see they are quite matching too each other.
 
-![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L100.png?raw=true)
 
 Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)：
 
@@ -89,20 +89,18 @@ Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)�
 | L_white=inf | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_whiteinf.png?raw=true) |
 
 
+###  Using Different Lambda
 
-
-###  使用不同 Lambda
-
-我們嘗試使用不同的 lambda 來看看 objective 中平滑項和另一項的 tradeoff 關係。實驗中我們固定 weighting function 是 linear，並使用 Mantuik '06 來 tone map。
+To observe the influence of different lambda on the result. I make the tone-mapping parameters(a, L_white) fixed and modify lambda.
 
 | Lambda | g                                        | Tone mapped                            |
 | ------ | ---------------------------------------- | -------------------------------------- |
-| 1      | ![img](./tests/1.0_linear/exposure.png)  | ![img](./tests/1.0_linear/result.png)  |
-| 2      | ![img](./tests/2.0_linear/exposure.png)  | ![img](./tests/2.0_linear/result.png)  |
-| 5      | ![img](./tests/5.0_linear/exposure.png)  | ![img](./tests/5.0_linear/result.png)  |
-| 10     | ![img](./tests/10.0_linear/exposure.png) | ![img](./tests/10.0_linear/result.png) |
-| 20     | ![img](./tests/20.0_linear/exposure.png) | ![img](./tests/20.0_linear/result.png) |
-| 50     | ![img](./tests/50.0_linear/exposure.png) | ![img](./tests/50.0_linear/result.png) |
+| 10      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L10.png?raw=true)  | ![img](./tests/1.0_linear/result.png)  |
+| 20      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)  | ![img](./tests/2.0_linear/result.png)  |
+| 50      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L50.png?raw=true)  | ![img](./tests/5.0_linear/result.png)  |
+| 100     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L100.png?raw=true) | ![img](./tests/10.0_linear/result.png) |
+| 200     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L2010.png?raw=true) | ![img](./tests/20.0_linear/result.png) |
+| 400     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true) | ![img](./tests/50.0_linear/result.png) |
 
 從上面的比較可以看出隨著 lambda 的增大，平滑項的影響也越來越大，因此曲線確實有越來越平滑。至於 tone mapped 以後的結果並無顯著的差別（但仔細觀察會發現 lambda 約大其實影像細節有比較清楚）。
 

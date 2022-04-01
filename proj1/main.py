@@ -21,9 +21,9 @@ photo_list = lib.read_photoes(file_dir=config.input_dir, file_num=config.image_n
 picked_pixels_b = lib.pick_pixels(photo_list, channel=0, number_picked_pixels=400)
 picked_pixels_g = lib.pick_pixels(photo_list, channel=1, number_picked_pixels=400)
 picked_pixels_r = lib.pick_pixels(photo_list, channel=2, number_picked_pixels=400)
-g_b = lib.solve_debevec(photo_list, picked_pixels_b, channel=0, L=400)
-g_g = lib.solve_debevec(photo_list, picked_pixels_g, channel=1, L=400)
-g_r = lib.solve_debevec(photo_list, picked_pixels_r, channel=2, L=400)
+g_b = lib.solve_debevec(photo_list, picked_pixels_b, channel=0, L=100)
+g_g = lib.solve_debevec(photo_list, picked_pixels_g, channel=1, L=100)
+g_r = lib.solve_debevec(photo_list, picked_pixels_r, channel=2, L=100)
 
 # test
 xpoints = np.array(range(256))
