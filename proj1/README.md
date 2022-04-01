@@ -10,7 +10,7 @@
 - `run.sh`：run `main.py` with predefined arguments.
 - `main.py`：will handle command line arguments and then `import lib` and `import utilities` to run the Debevec's HDR Method.
 - `lib.py`：implementation of Debevec's Methods.
-- `utilities.py`：handle some trivial functions，like `show_multiple_images` .... .
+- `utilities.py`：handle some trivial functions，like `show_multiple_images`.
 
 
 ## How to execute
@@ -21,18 +21,15 @@
 	1. Execute `./code/run.sh` while in `./code`.
 	2. Run ./code/main.py with arguments:
 
-
-主程式是 main.py，可以直接 python3 main.py 或是跑 run.sh。有一些 argument 可以使用者自訂。
-
 |  Argument  |                         Explanation                          | Required |
 | :--------: | :----------------------------------------------------------: | :------: |
-| input_dir  |                 存不同 exposure 影像的資料夾                 |   Yes    |
-| output_dir |               存輸出 .hdr 檔和 plots 的資料夾                |   Yes    |
-|     l      |            Debevec's Method 裡面的 lambda factor             | Optional |
-|   scale    | Downsample factor （有些照片太大會跑比較久，可以先縮小照片） | Optional |
-|    hat     |          Debevec's Method 裡面的 weighting function          | Optional |
-|   align    |          是否要使用 alignment algorithm（advised）           | Optional |
-有其他疑問可以執行` python3 main.py --help`。
+| input_dir  |                 The directory where you put all your input images|   Yes    |
+| image_extension | The extension of your image files | Yes |
+| image_num | The number of your input images | Yes |
+| exposure_path |            The path to your exposures.txt             | Optional |
+| output_dir | The directory where you want to store all the outputs (including g_function plot, hdr file, tone_mapped hdr file with different parameters) |   Yes    |
+
+example: `python main.py --input_dir ../data/ --image_extension .jpg --image_num 14 --exposure_path ../data/exposures.txt --output_dir ../output`
 
 ## 演算法
 
