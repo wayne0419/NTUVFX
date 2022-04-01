@@ -15,8 +15,8 @@
 
 ## How to execute
 - Data format:
-	(1) Images should be named from 0 to N, where N is the number of your images.
-	(2) ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
+	- Images should be named from 0 to N, where N is the number of your images.
+	- ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
 Execution method
 	(1) Execute ./code/run.sh while in ./code
 	or
