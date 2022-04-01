@@ -18,9 +18,10 @@
 	- Images should be named from 0 to N, where N is the number of your images.
 	- ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
 - Execution method:
-	- Execute ./code/run.sh while in ./code
-	or
+	- Execute `./code/run.sh` while in `./code`.
+or
 	- Run ./code/main.py with arguments:
+
 	--input_dir : the directory where you put all your input images.
 	--image_extension : the extension of your image files.
 	--image_num : the number of your input images.
