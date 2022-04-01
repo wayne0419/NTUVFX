@@ -95,12 +95,12 @@ To observe the influence of different lambda on the result. I make the tone-mapp
 
 | Lambda | g                                        | Tone mapped                            |
 | ------ | ---------------------------------------- | -------------------------------------- |
-| 10      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L10.png?raw=true)  | ![img](./tests/1.0_linear/result.png)  |
-| 20      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)  | ![img](./tests/2.0_linear/result.png)  |
-| 50      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L50.png?raw=true)  | ![img](./tests/5.0_linear/result.png)  |
-| 100     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L100.png?raw=true) | ![img](./tests/10.0_linear/result.png) |
-| 200     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L2010.png?raw=true) | ![img](./tests/20.0_linear/result.png) |
-| 400     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true) | ![img](./tests/50.0_linear/result.png) |
+| 10      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L10.png?raw=true)  | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L10.png?raw=true)  |
+| 20      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)  | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L20.png?raw=true)  |
+| 50      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L50.png?raw=true)  | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L50.png?raw=true)  |
+| 100     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L100.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L100.png?raw=true) |
+| 200     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L2010.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L200.png?raw=true) |
+| 400     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L400.png?raw=true) |
 
 從上面的比較可以看出隨著 lambda 的增大，平滑項的影響也越來越大，因此曲線確實有越來越平滑。至於 tone mapped 以後的結果並無顯著的差別（但仔細觀察會發現 lambda 約大其實影像細節有比較清楚）。
 
