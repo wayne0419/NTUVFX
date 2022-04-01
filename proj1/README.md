@@ -79,16 +79,6 @@ Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)�
 
 ## Experiments
 
-### Using Different Tone-mapping Parameters(a, L_white)
-
-|             | a=0.18      | a=0.3     | a=0.4     | a=0.5     | a=0.75    |
-| --------    | ----------- | ----------| ----------| ----------| ----------|
-| L_white=0.5 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white0.5.png?raw=true) |
-| L_white=1.5 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white1.5.png?raw=true) |
-| L_white=3   | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white3.png?raw=true) |
-| L_white=inf | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_whiteinf.png?raw=true) |
-
-
 ###  Using Different Lambda
 
 To observe the influence of different lambda on the result. I make the tone-mapping parameters(a, L_white) fixed and modify lambda.
@@ -99,21 +89,17 @@ To observe the influence of different lambda on the result. I make the tone-mapp
 | 20      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)  | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L20.png?raw=true)  |
 | 50      | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L50.png?raw=true)  | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L50.png?raw=true)  |
 | 100     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L100.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L100.png?raw=true) |
-| 200     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L2010.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L200.png?raw=true) |
+| 200     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L200.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L200.png?raw=true) |
 | 400     | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/tone_mapped_L400.png?raw=true) |
 
-從上面的比較可以看出隨著 lambda 的增大，平滑項的影響也越來越大，因此曲線確實有越來越平滑。至於 tone mapped 以後的結果並無顯著的差別（但仔細觀察會發現 lambda 約大其實影像細節有比較清楚）。
+We can see that as lambda goes up, the mapping function g become smoother, but the tone-mapped results have almost no difference.
 
-### 使用 Alignment
+### Using Different Tone-mapping Parameters(a, L_white)
 
-我們也有另外時做了 MTB Alignment Algorithm，程式碼在 `lib.alignment`。下圖比較有無 alignment 的差別（我們固定 weight function 為 linear，lambda = 20）。  
-我們實作Alignment的方法為MTB。首先我們先選定一張照片，以作為alignment的參考，這裡我們選定第五張照片，因為曝光太多或是太少的照片都會讓細節變得較少，不適合作為參考圖。  
-選定照片之後，對於每一張照片，都套用MTB的方法來對齊照片。首先利用cv2中的resize功能，將要對齊的照片以及參考圖皆壓縮6倍（倍數可以調整），並將其轉會為bitmap，並搜尋其9個neighbors何者與參考圖的difference最小，並記錄下來。之後再將要對齊的照片壓縮5倍，並shift到上一層（壓縮6倍）時的最小difference位置，然後再搜尋其9個neighbors。重複至壓縮1倍（也就是沒有壓縮），並輸出shift過後的圖片。
-這個方法的缺點是一但有一個level做錯，則後面就無法再shift回最佳的對齊位置了，且當圖片壓縮得越嚴重，則越有可能會shift錯位置，因此建議最大的壓縮倍數不要調得太高。
-
-|                | Result                                            |
-| -------------- | ------------------------------------------------- |
-| No Alignment   | ![img](./results/20.0_linear_no_align/result.png) |
-| With Alignment | ![img](./results/20.0_linear_align/result.png)    |
-
+|             | a=0.18      | a=0.3     | a=0.4     | a=0.5     | a=0.75    |
+| --------    | ----------- | ----------| ----------| ----------| ----------|
+| L_white=0.5 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white0.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white0.5.png?raw=true) |
+| L_white=1.5 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white1.5.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white1.5.png?raw=true) |
+| L_white=3   | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_white3.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_white3.png?raw=true) |
+| L_white=inf | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.18_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.3_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.4_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_whiteinf.png?raw=true) | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.75_whiteinf.png?raw=true) |
  
