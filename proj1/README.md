@@ -66,12 +66,12 @@ Below are the 10 input images with different exposure time.
 | ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Images/night_street/9.jpg?raw=true) |
 
 The parameter I choose to use 
-- lambda = 20
+- lambda = 400
 - weighting function : linear-hat
 
 The below plot shows the mapping function g I get for each channel. Can see they are quite matching too each other.
 
-![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L20.png?raw=true)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/g_function_L400.png?raw=true)
 
 Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)：
 

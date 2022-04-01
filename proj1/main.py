@@ -21,9 +21,9 @@ photo_list = lib.read_photoes(file_dir=config.input_dir, file_num=config.image_n
 picked_pixels_b = lib.pick_pixels(photo_list, channel=0, number_picked_pixels=400)
 picked_pixels_g = lib.pick_pixels(photo_list, channel=1, number_picked_pixels=400)
 picked_pixels_r = lib.pick_pixels(photo_list, channel=2, number_picked_pixels=400)
-g_b = lib.solve_debevec(photo_list, picked_pixels_b, channel=0, L=20)
-g_g = lib.solve_debevec(photo_list, picked_pixels_g, channel=1, L=20)
-g_r = lib.solve_debevec(photo_list, picked_pixels_r, channel=2, L=20)
+g_b = lib.solve_debevec(photo_list, picked_pixels_b, channel=0, L=400)
+g_g = lib.solve_debevec(photo_list, picked_pixels_g, channel=1, L=400)
+g_r = lib.solve_debevec(photo_list, picked_pixels_r, channel=2, L=400)
 
 # test
 xpoints = np.array(range(256))
@@ -47,7 +47,7 @@ cv2.imwrite(destination_dir + "/hdr.hdr", irradiance)
 for a in [0.18, 0.3, 0.4, 0.5, 0.75]:
 	for L_white in [0.5, 1, 1.5, 3, inf]:
 		lib.reinhard_global_tone_map(irradiance_b, irradiance_g, irradiance_r, a=a, sigma=0.00000001, L_white=L_white, 
-									destination=destination_dir + "/tone_mapped_a={}_white={}.png".format(str(a), L_white))
+									destination=destination_dir + "/tone_mapped_a{}_white{}.png".format(str(a), L_white))
 
 
 
