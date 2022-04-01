@@ -75,7 +75,7 @@ The below plot shows the mapping function g I get for each channel. Can see they
 
 Tone mapped result (Reinhard's Method global operaotr, with a=0.5, L_white=inf)：
 
-![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a=0.5_white=inf.png?raw=true)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/Test_result/night_street_hdr/tone_mapped_a0.5_whiteinf.png?raw=true)
 
 ## Experiments
 
