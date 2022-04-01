@@ -44,28 +44,16 @@ This has to be done for every channel: R,G,B. In the end, I will get the radianc
 
 ## Implementation Details
 
+First, I have to handle the reading of the images. My implementation allows user to choose to provide images either with exposure data kept inside the metadata of the images or with an extra file `exposures.txt` that keeps the exposure data.
 
+Then, for sampling pixels, I have tried
+- random sampling
+- sort the pixels based on their luminosity and then pick pixels uniformly across the sorted list.
+But the result are almost the same.
 
-我們大概拍了 9 張照片，其中 exposure 是每張照片兩倍的遞增。拿到 jpg 檔以後可以用 `PIL` 裡面的含式去讀 jpg 檔的 metadata 拿到 exposure （ see `lib.hdr.get_labeled_exif`）。這是 Debevec's Method 裡面的 delta t。
+Forward, I throw these pixels inside `lib.solve_debevec` to calculate the g function for R,G,B channels: `g_r`, `g_g`, `g_b`, and then derive the radiance map for each channel: `irradiance_r`, `irradiance_g`, `irradiance_b`. By stacking them, I get the HDR image.
 
-針對每一個 color channel（也就是接下來的步驟要總共做三次），要去 sample 圖中的一些點的 pixel value。我們最後是直接等距 sample 一些點，但試過 random sampling 其實效果也差不多。Sample 完點以後就是把值傳入 `lib.hdr.solve_debevec` 來解出 g 這個 mapping function（是一個 256 維的陣列，0~255 的 index 分別代表 該 pixel value 對應到的 irradiance 值）。
-
-接者就可以用 g 來算不同 channel 的 radiance map。我們利用一些 numpy 中 vectorized 的函式（例如下面程式碼中的 `np.average`，可以加快速度：
-
-```python
-def get_radiance_map(images, g, exp, w):
-    _h, _w = images[0].shape
-    images = np.array(images)
-    E = []
-    for i, img in enumerate(images):
-        E.append(g[img] - exp[i])
-    rad = np.average(E, axis=0, weights=w[images])
-    return rad
-```
-
-把三個 channel 的 radiance map 組合起來就可以得到最終的 hdr image。注意最後是用 `np.float32` 的資料型態來儲存。
-
-最後我們利用開源的 Luminance HDR 套件來 tone map 我們的 hdr image，選用的演算法是 Mantuik '06。
+To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. 
 
 ## 結果
 
