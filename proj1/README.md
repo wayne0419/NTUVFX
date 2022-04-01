@@ -5,7 +5,7 @@
 - 網媒所 王哲瑋 Che Wei Wang r10944037
 
 
-## Repo Structure
+## Code Structure
 
 - `run.sh`：run `main.py` with predefined arguments.
 - `main.py`：will handle command line arguments and then `import lib` and `import utilities` to run the Debevec's HDR Method.
@@ -13,7 +13,7 @@
 - `utilities.py`：handle some trivial functions，like `show_multiple_images`.
 
 
-## How to execute
+## How To Execute
 - Data format:
 	- Images should be named from 0 to N, where N is the number of your images.
 	- ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
@@ -29,17 +29,18 @@
 | exposure_path |            The path to your exposures.txt             | Optional |
 | output_dir | The directory where you want to store all the outputs (including g_function plot, hdr file, tone_mapped hdr file with different parameters) |   Yes    |
 
-example: `python main.py --input_dir ../data/ --image_extension .jpg --image_num 14 --exposure_path ../data/exposures.txt --output_dir ../output`
 
-## 演算法
+## About The Algorithm
 
-我們實作了上課提到的 Debevec's Method。
+The algorithm being implemented in this project is Debevec's Method。
 
 ![img](./images/debevec.png)
 
-由上述 objective function 解出 g 這個 mapping function 以後，就可以用下面公式算出一個 color channel 中每一個 pixel 的 radiance，也就是得到該 channel 的 radiance map。把不同 channel 的 radiance map 組合起來就可以得到最終的 hdr image。
+After solving the gunction g in the above formula, I can use the below formula to calculate the radiance of every pixel.
 
 ![img](./images/debevec2.png)
+
+This has to be done for every channel: R,G,B. In the end, we will get the radiance map for all three channels, and after stacking them together, we can get the HDR.
 
 ## 說明
 
