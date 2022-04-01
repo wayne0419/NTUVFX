@@ -22,13 +22,7 @@
 or
 	- Run ./code/main.py with arguments:
 
-	--input_dir : the directory where you put all your input images.
-	--image_extension : the extension of your image files.
-	--image_num : the number of your input images.
-	--exposure_path : the path to your exposures.txt.
-	--output_dir : the directory where you want to store all the outputs (including g_function plot, hdr file, tone_mapped hdr file with different parameters).
-	example:
-	python main.py --input_dir ../data/ --image_extension .jpg --image_num 14 --exposure_path ../data/exposures.txt --output_dir ../output
+
 主程式是 main.py，可以直接 python3 main.py 或是跑 run.sh。有一些 argument 可以使用者自訂。
 
 |  Argument  |                         Explanation                          | Required |
