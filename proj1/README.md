@@ -17,10 +17,9 @@
 - Data format:
 	- Images should be named from 0 to N, where N is the number of your images.
 	- ExposureTime should be stored in a file named exposures.txt , this file is not required if you have exposure time kept in your images' metadata.
-- Execution method:
-	- Execute `./code/run.sh` while in `./code`.
-or
-	- Run ./code/main.py with arguments:
+- Execution methods:
+	1. Execute `./code/run.sh` while in `./code`.
+	2. Run ./code/main.py with arguments:
 
 
 主程式是 main.py，可以直接 python3 main.py 或是跑 run.sh。有一些 argument 可以使用者自訂。
