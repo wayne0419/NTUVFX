@@ -53,7 +53,23 @@ But the result are almost the same.
 
 Forward, I throw these pixels inside `lib.solve_debevec` to calculate the g function for R,G,B channels: `g_r`, `g_g`, `g_b`, and then derive the radiance map for each channel: `irradiance_r`, `irradiance_g`, `irradiance_b`. By stacking them, I get the HDR image.
 
-To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. Various combination of `key a` and `L_white` have been experimented with.
+To tone-map the HDR image, I implement the Reinhard's Method but only the global operator part. 
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/reinhard1.png?raw=true)
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/reinhard3.png?raw=true)
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/reinhard4.png?raw=true)
+
+First I calculate the output tone-mapped luminosity `L_w` using the above three formula and the original HDR luminosity `L_d`.
+
+`key a` and `L_white` are user-defined parameters for different tone-mapped result.
+
+Various combination of `key a` and `L_white` have been experimented with and the result will be presented in later part of the report.
+
+After getting `L_w`, I use the below formula to scale the RGB channels of our HDR image and get the tone-mapped result.
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/reinhard2.png?raw=true)
 
 ## Result
 
