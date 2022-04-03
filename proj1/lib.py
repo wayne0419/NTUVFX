@@ -102,7 +102,7 @@ def read_photoes(file_dir, file_num, file_extension=".png", exposure_filename = 
 # Pick pixels (around 25) for Debevec HDR recovery algorithm
 def pick_pixels(photo_list, channel, number_picked_pixels = 25):
 	photo = photo_list[0]
-	img = photo.img[:,:,channel]
+	img = np.copy(photo.img[:,:,channel])
 	width = img.shape[1]
 	height = img.shape[0]
 	pixel_list = []
@@ -208,7 +208,7 @@ def merge_irradiance(photo_list, g, channel):
 	irradiance_list = []
 	w_list = []
 	for photo in photo_list:
-		img = photo.img[:,:,channel]
+		img = np.copy(photo.img[:,:,channel])
 		width = img.shape[1]
 		height = img.shape[0]
 		ln_dt = np.log(photo.dt)
@@ -265,10 +265,10 @@ def reinhard_global_tone_map(irradiance_b, irradiance_g, irradiance_r, a=0.5, si
 	L_w_mean = np.exp(np.mean(np.log(sigma + L_w)))
 	L_m = a / L_w_mean * L_w
 	L_d = L_m*(1+L_m/(L_white**2)) / (L_m + 1)
-	L_ratio = L_d / L_w
-	img = img * np.stack((L_ratio, L_ratio, L_ratio), axis=2 )
+	L_ratio = L_d*255 / L_w
+	img = np.clip(img * np.stack((L_ratio, L_ratio, L_ratio), axis=2 ), 0, 255)
 	# utilities.show_image(img)
-	cv2.imwrite(destination, img*255)
+	cv2.imwrite(destination, img)
 
 
 		
