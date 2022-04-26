@@ -1,12 +1,10 @@
 import math
-from re import L, X
-from struct import Struct
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from scipy.ndimage import filters
 import utilities
+from matplotlib.patches import Rectangle
 
 def read_focal_length(filename):
 	file = open(filename, "r")
@@ -75,7 +73,7 @@ def build_projected_pyramid(image_pyramid, focal_length):
 	return proj_image_pyramid
 
 class point2D():
-	def __init__(self, value, x=-1, y=-1):
+	def __init__(self, value=0, x=-1, y=-1):
 		self.x = x
 		self.y = y
 		self.value = value
@@ -156,3 +154,60 @@ def build_descriptions_pyramid(fpts_pyramid, proj_grayimg_pyramid):
 		descriptions = build_descriptions(fpts, proj_grayimg)
 		descriptions_pyramid.append(descriptions)
 	return descriptions_pyramid
+
+def msop(images, focal_lengths, pyramid_depth=4):
+	proj_img_pyramids = []
+	description_pyramids = []
+	for i in range(len(images)):
+		image = np.copy(images[i])
+		focal_length = focal_lengths[i]
+
+		img_pyramid, grayimg_pyramid = build_img_pyramid(image, depth=pyramid_depth)
+
+		harris_response_pyramid = get_harris_response_pyramid(grayimg_pyramid, sigma=1.5)
+
+
+		proj_img_pyramid = build_projected_pyramid(img_pyramid, focal_length)
+		proj_grayimg_pyramid = build_projected_pyramid(grayimg_pyramid, focal_length)
+		proj_harris_response_pyramid = build_projected_pyramid(harris_response_pyramid, focal_length)
+
+
+		fpts_pyramid = build_feature_points_pyramid(proj_harris_response_pyramid , 150)	#TODO: may try n_features=300
+		# # Plot Result ###############################
+		# plt.figure(figsize=(20, 10))
+		# columns = pyramid_depth
+		# rows = 1
+		# for i in range(columns):
+		# 	img = np.copy(proj_img_pyramid[i])
+		# 	fpts = np.copy(fpts_pyramid[i])
+		# 	plt.subplot(rows, columns, i*rows + 1)
+		# 	plt.imshow(cv2.cvtColor(np.uint8(img), cv2.COLOR_BGR2RGB))
+		# 	for fpt in fpts:
+		# 		plt.plot( fpt.x, fpt.y, 'r.')
+
+		# plt.show()
+		# # ###########################################
+
+		descriptions_pyramid = build_descriptions_pyramid(fpts_pyramid, proj_grayimg_pyramid)
+		# # Plot Result ###############################
+		# plt.figure(figsize=(20, 10))
+		# columns = pyramid_depth
+		# rows = 1
+		# for i in range(columns):
+		# 	img = np.copy(proj_img_pyramid[i])
+		# 	descriptions = np.copy(descriptions_pyramid[i])
+		# 	plt.subplot(rows, columns, i*rows + 1)
+		# 	plt.imshow(cv2.cvtColor(np.uint8(img), cv2.COLOR_BGR2RGB))
+		# 	ax = plt.gca()
+		# 	for d in descriptions:
+		# 		rect = Rectangle( (d.point.x, d.point.y), 40, 40, angle=d.orientation, linewidth=1, edgecolor='r', facecolor='none')
+		# 		ax.add_patch(rect)
+
+		# plt.show()
+		# # ###########################################
+		proj_img_pyramids.append(proj_img_pyramid)
+		description_pyramids.append(descriptions_pyramid)
+	
+	return proj_img_pyramids, description_pyramids
+
+

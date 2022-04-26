@@ -1,5 +1,5 @@
 import numpy as np
-import msop
+# import msop
 import math
 import cv2
 import utilities
@@ -11,7 +11,21 @@ print(a)
 # rimg = cv2.warpAffine(np.uint8(a), rmat, (a.shape[1], a.shape[0]))
 # print(rimg)
 
-b = utilities.get_around_center(a, (1,2), 1)
-print(b.shape)
-print(b)
+# b = utilities.get_around_center(a, (1,2), 1)
+# print(b.shape)
+# print(b)
+
+# c = np.array(range(9))
+# c = np.reshape(c, (3,3))
+# print(c)
+# b = np.copy(a)
+# b[2:5, 2:5] = c
+# print(b)
+# c[2,2] = 999
+# print(b)
+# print(c)
+
+for b in a:
+	print(b)
+	print(b.shape)
 
