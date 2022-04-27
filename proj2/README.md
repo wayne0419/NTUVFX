@@ -34,7 +34,9 @@
 
 The feature detection algorithm being implemented in this project is MSOP's feature detection, which is multi-scale Harris Corner Detection.
 
-The first thing I do is scale input images into multiple scales: 1, 1/2, 1/4, 1/8, and also the grayscale image of them.
+The following steps under "Feature detection" section have to be done for every input image. Here I use one image as an example.
+
+The first thing I do is scale input images into 4 scales: 1, 1/2, 1/4, 1/8, and also the grayscale image of them.
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/1_build_img_pyramid.png?raw=true)
 
@@ -42,7 +44,13 @@ Then, I compute the Harris Corner Response for all scales of the image. Below is
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/2_compute_harris_response.png?raw=true)
 
-This has to be done for every channel: R,G,B. In the end, I will get the radiance map for all three channels, and after stacking them together, I can get the HDR.
+Next, I do cylindrical projection on the image. The below image shows the projected images with Harris Response
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/3_cylindrical_proj_img_and_response.png?raw=true)
+
+Then, I pick the feature points using non-maximal suppression methid to try to pick well-distributed feature points.
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/4_get_feature_points.png?raw=true)
 
 ## Implementation Details
 
