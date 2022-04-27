@@ -30,7 +30,7 @@
 | focal_length_path |            The path to your focal-length file             | Yes |
 
 
-## Feature detection
+## Feature Detection
 
 The feature detection algorithm being implemented in this project is MSOP's feature detection, which is multi-scale Harris Corner Detection.
 
@@ -52,11 +52,11 @@ Then, I pick the feature points using non-maximal suppression methid to try to p
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/4_get_feature_points.png?raw=true)
 
-## Feature description
+## Feature Description
 
 After I pcik the feature points for every scale of every image, now I can make descriptions for them.
 
-The following steps under "Feature description" section have to be done for every input image. Here I use one image as an example.
+The following steps under "Feature Description" section have to be done for every input image. Here I use one image as an example.
 
 To describe a feature point, I first decide the orientation of it.
 
@@ -74,10 +74,31 @@ Below image shows how feature point gets its description patch.
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/5_get_descriptions__ignoreIncompleteDescription.png?raw=true)
 
-Below is an example of a 8*8 description patch.
+Below is an example of how a 8*8 description patch looks like.
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/6_description_patch_example.png?raw=true)
-## Implementation Details
+
+## Feature Matching
+
+After I got the descriptions of every feature point of every image, I want to match the feature points between every consecutive images.
+
+The following steps under "Feature Matching" section have to be done for every consecutive images. Here I use one image pair as an example.
+
+To match feature points, I use KNN algorithm, and below is the result:
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/7_2_pairwise_alignment_without_ignore.png?raw=true)
+
+You can see there are some obvious matching errors, and those errors happen because those feature points sit on the edge of the image, and dont have a complete 40*40 description patch. 
+
+So like I said in previous section, I ignore those kind of feautre points, and this is the result:
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/7_2_pairwise_alignment.png?raw=true)
+
+Much better, right?
+
+
+
+
 
 First, I have to handle the reading of the images. My implementation allows user to choose to provide images either with exposure data kept inside the metadata of the images or with an extra file `exposures.txt` that keeps the exposure data.
 
