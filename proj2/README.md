@@ -96,6 +96,34 @@ So like I said in previous section, I ignore those kind of feautre points, and t
 
 Much better, right?
 
+## Image Alignment
+
+After we match the feature points between each consecutive images, we can compute the transform between each image and then align them together.
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/9_2_combine_without_blending.png?raw=true)
+
+Hmmm, the image are aligned correctly, but the color between them are not merged well. We can easily see the connection boundary between images.
+
+## Image Blending
+
+To solve the "color between them are not merged well" issue. I use linear interpolation toe blend the colors between images, illustrated as below image.
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/formula2.png?raw=true)
+
+Then I get a much better result:
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/9_1_combine_with_blending.png?raw=true)
+
+## Result
+
+Here are the final complete results of the stitched images:
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/10_result.png?raw=true)
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/10_result_library.png?raw=true)
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/10_result_mountain.png?raw=true)
+
 
 
 
