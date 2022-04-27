@@ -52,6 +52,26 @@ Then, I pick the feature points using non-maximal suppression methid to try to p
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/4_get_feature_points.png?raw=true)
 
+## Feature description
+
+After I pcik the feature points for every scale of every image, now I can make descriptions for them.
+
+The following steps under "Feature description" section have to be done for every input image. Here I use one image as an example.
+
+To describe a feature point, I first decide the orientation of it.
+
+The orientation of a feature point is defined by first doing a Gaussian Blur on the image to decrease noise, then compute the gradient at the feature point and use the gradient as the orientation of it. Like the below formula.
+
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/formula1.png?raw=true)
+
+Then I rotate the image to align the orientation of the feature point toward right and then sample a 40*40 patch around the feature point.
+If a feature point does not have a complete 40*40 patch around it, like sitting on the eade of the image, then the feature point will be ignored.
+The 40*40 patch is then standardized and resized to an 8*8 patch. This 8*8 patch will be the description of this feature point.
+
+Below image shows how feature point gets its description patch.
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/5_get_descriptions__ignoreIncompleteDescription.png?raw=true)
+An example of a 8*8 description patch.
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/6_description_patch_example.png?raw=true)
 ## Implementation Details
 
 First, I have to handle the reading of the images. My implementation allows user to choose to provide images either with exposure data kept inside the metadata of the images or with an extra file `exposures.txt` that keeps the exposure data.
