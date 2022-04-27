@@ -64,11 +64,11 @@ The orientation of a feature point is defined by first doing a Gaussian Blur on 
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/formula1.png?raw=true)
 
-Then I rotate the image to align the orientation of the feature point toward right and then sample a 40*40 patch around the feature point.
+Then I rotate the image to align the orientation of the feature point toward right and then sample a 40\*40 patch around the feature point.
 
-If a feature point does not have a complete 40*40 patch around it, like sitting on the eade of the image, then the feature point will be ignored.
+If a feature point does not have a complete 40\*40 patch around it, like sitting on the eade of the image, then the feature point will be ignored.
 
-The 40*40 patch is then standardized and resized to an 8*8 patch. This 8*8 patch will be the description of this feature point.
+The 40\*40 patch is then standardized and resized to an 8\*8 patch. This 8\*8 patch will be the description of this feature point.
 
 Below image shows how feature point gets its description patch.
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/5_get_descriptions__ignoreIncompleteDescription.png?raw=true)
