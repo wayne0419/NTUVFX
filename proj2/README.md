@@ -92,7 +92,7 @@ You can see there are some obvious matching errors, and those errors happen beca
 
 So like I said in previous section, I ignore those kind of feautre points, and this is the result:
 
-![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/7_2_pairwise_alignment.png?raw=true)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/7_1_pairwise_alignment.png?raw=true)
 
 Much better, right?
 
