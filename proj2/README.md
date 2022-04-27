@@ -102,11 +102,11 @@ After we match the feature points between each consecutive images, we can comput
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/9_2_combine_without_blending.png?raw=true)
 
-Hmmm, the image are aligned correctly, but the color between them are not merged well. We can easily see the connection boundary between images.
+Hmmm, the image are aligned correctly, but the color between them are not merged well. We can easily see the connection boundary between them.
 
 ## Image Blending
 
-To solve the "color between them are not merged well" issue. I use linear interpolation toe blend the colors between images, illustrated as below image.
+To solve the "color between images are not merged well" issue. I use linear interpolation to blend the colors between images, illustrated as below image.
 
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/formula2.png?raw=true)
 
