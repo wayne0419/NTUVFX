@@ -19,10 +19,23 @@ def get_paired_points(descriptionsA, descriptionsB, ratio_threshold = 0.7):
 		des_patch = description.des_patch.flatten()
 		des_patchsB.append(des_patch)
 	des_patchsB = np.array(des_patchsB)
+	# return [] if either no decription in A or no description in B
+	if len(des_patchsA.shape) == 1 or len(des_patchsB.shape) == 1:
+		return []
+
 
 	# do knn
-	neigh = NearestNeighbors(n_neighbors=2).fit(des_patchsB)
-	distances, indices = neigh.kneighbors(des_patchsA)
+	if des_patchsA.shape[0] < 2 and des_patchsB.shape[0] < 2:
+		return []
+	elif des_patchsA.shape[0] >= 2 and des_patchsB.shape[0] < 2:
+		pool = des_patchsA
+		samples = des_patchsB
+	else:
+		pool = des_patchsB
+		samples = des_patchsA
+
+	neigh = NearestNeighbors(n_neighbors=2).fit(pool)
+	distances, indices = neigh.kneighbors(samples)
 	paired_points = []
 	for i in range(len(distances)):
 		# for ith description in A, get 1st-closet, 2nd-closest descriptions in B
