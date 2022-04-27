@@ -71,8 +71,11 @@ If a feature point does not have a complete 40\*40 patch around it, like sitting
 The 40\*40 patch is then standardized and resized to an 8\*8 patch. This 8\*8 patch will be the description of this feature point.
 
 Below image shows how feature point gets its description patch.
+
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/5_get_descriptions__ignoreIncompleteDescription.png?raw=true)
-An example of a 8*8 description patch.
+
+Below is an example of a 8*8 description patch.
+
 ![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/6_description_patch_example.png?raw=true)
 ## Implementation Details
 
