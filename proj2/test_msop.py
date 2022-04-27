@@ -13,7 +13,7 @@ focal_length = msop.read_focal_length(FOCAL_LENGTH_SRC)
 
 img_pyramid, grayimg_pyramid = msop.build_img_pyramid(image, depth=PYRAMID_DEPTH)
 # Plot Result ###############################
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(10, 6))
 columns = PYRAMID_DEPTH
 rows = 2
 for i in range(columns):
@@ -22,13 +22,13 @@ for i in range(columns):
 
 for i in range(columns):
 	plt.subplot(rows, columns, columns + i + 1)
-	plt.imshow(grayimg_pyramid[i])
+	plt.imshow(cv2.cvtColor(grayimg_pyramid[i], cv2.COLOR_GRAY2RGB) )
 plt.show()
 # ###########################################
 
 harris_response_pyramid = msop.get_harris_response_pyramid(grayimg_pyramid, sigma=1.5)
 # Plot Result ###############################
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(16, 6))
 columns = PYRAMID_DEPTH
 rows = 1
 for i in range(columns):
@@ -45,7 +45,7 @@ proj_img_pyramid = msop.build_projected_pyramid(img_pyramid, focal_length[17])
 proj_grayimg_pyramid = msop.build_projected_pyramid(grayimg_pyramid, focal_length[17])
 proj_harris_response_pyramid = msop.build_projected_pyramid(harris_response_pyramid, focal_length[17])
 # Plot Result ###############################
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(16, 6))
 columns = PYRAMID_DEPTH
 rows = 1
 for i in range(columns):
@@ -60,7 +60,7 @@ plt.show()
 
 fpts_pyramid = msop.build_feature_points_pyramid(proj_harris_response_pyramid , 150)	#TODO: may try n_features=300
 # Plot Result ###############################
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(16, 6))
 columns = PYRAMID_DEPTH
 rows = 1
 for i in range(columns):
@@ -76,7 +76,7 @@ plt.show()
 
 descriptions_pyramid = msop.build_descriptions_pyramid(fpts_pyramid, proj_grayimg_pyramid)
 # Plot Result ###############################
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(16, 6))
 columns = PYRAMID_DEPTH
 rows = 1
 for i in range(columns):
@@ -97,6 +97,6 @@ for i in range(PYRAMID_DEPTH):
 		fpt = fpts_pyramid[i][j]
 		description = descriptions_pyramid[i][j]
 		print((fpt.x, fpt.y), (description.point.x, description.point.y, description.orientation))
-		plt.imshow(description.des_patch)
+		plt.colorbar(plt.imshow(description.des_patch))
 		plt.show()
 # ###########################################

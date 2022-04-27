@@ -135,9 +135,9 @@ def build_descriptions(fpts, proj_grayimg):
 		rotated_image = cv2.warpAffine(image, rmat, (image.shape[1], image.shape[0]))
 		# get 40*40 patch around the fpt
 		patch = utilities.get_around_center(rotated_image, (int(fpt.y), int(fpt.x)), int(40/2))
-		if patch.shape[0] < 40 or patch.shape[1] < 40:	#TODO: may need this
-			# ignore fpt that dont have complete patch
-			continue
+		# if patch.shape[0] < 40 or patch.shape[1] < 40:	#TODO: may need this
+		# 	# ignore fpt that dont have complete patch
+		# 	continue
 		blurred_patch = cv2.GaussianBlur(patch, (0,0), sigmaX=1, sigmaY=1)
 		resized_patch = cv2.resize(blurred_patch, (8, 8))
 		normalized_patch = (resized_patch-np.mean(resized_patch))/(np.std(resized_patch) + 1e-8)
