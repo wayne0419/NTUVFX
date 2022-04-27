@@ -4,9 +4,13 @@ import matplotlib.pyplot as plt
 import msop
 from matplotlib.patches import Rectangle
 import math
+from sklearn.neighbors import NearestNeighbors
+from tqdm import tqdm
+import stitching
+
 IMG_DIR = "./image/prtn/"
 IMG_FORMAT = ".jpg"
-N_IMG = 2
+N_IMG = 4
 FOCAL_LENGTH_SRC = "image/prtn/focal-length.txt"
 PYRAMID_DEPTH = 4
 
@@ -22,37 +26,46 @@ focal_lengths = msop.read_focal_length(FOCAL_LENGTH_SRC)
 proj_img_pyramids, description_pyramids = msop.msop(images, focal_lengths, pyramid_depth=PYRAMID_DEPTH)
 
 
-def build_paired_points_pyramids(description_pyramids, ratio_threshold = 0.7):	#TODO may use ratio_threshold = 0.8
-	# build paired_points_pyramids using knn
-	paired_points_pyramids = []
-	for i in range(len(description_pyramids))[:-1]:
-		# build paired_points_pyramid
-		des_pyramidA = description_pyramids[i]
-		des_pyramidB = description_pyramids[i+1]
-		depth = len(des_pyramidA)
-		paired_points_pyramid = []
-		for j in range(depth):
-			# build paired_points
-			descriptionsA = des_pyramidA[j]
-			descriptionsB = des_pyramidB[j]
-			pair_points = []
-
-			# preapare data
-			des_patchsA = []
-			for description in descriptionsA:
-				des_patch = description.des_patch.flatten()
-				des_patchsA.append(des_patch)
-			des_patchsA = np.array(des_patchsA)
-			des_patchsB = []
-			for description in descriptionsB:
-				des_patch = description.des_patch.flatten()
-				des_patchsB.append(des_patch)
-			des_patchsB = np.array(des_patchsB)
-			print(des_patchsA.shape)
-			# do knn
-			for des_patch in des_patchsA:
-				# kkkkkkkkkk
 			
+# Do Feature -Matching to get paired_points_pyramids
+paired_points_pyramids = stitching.build_paired_points_pyramids(description_pyramids, ratio_threshold=0.7) #TODO may use ratio_threshold = 0.8
 
-				
-build_paired_points_pyramids(description_pyramids)
+# Plot Result #######################################################################
+columns = PYRAMID_DEPTH
+rows = N_IMG
+fig=plt.figure(figsize=(columns*5, rows*5))
+for i in range(0, rows-1):
+	
+	for p in range(columns):
+		proj_img = proj_img_pyramids[i][p]
+		proj_img_next = proj_img_pyramids[i+1][p]
+		paired_points = paired_points_pyramids[i][p]
+
+		fig.subplots_adjust(wspace=0.2)
+		fig.add_subplot(rows, columns, i*PYRAMID_DEPTH+1+p)
+		
+		(hA, wA) = proj_img.shape[:2]
+		(hB, wB) = proj_img_next.shape[:2]
+
+		# Plot image
+		vis = np.zeros((max(hA, hB), wA + wB, 3), dtype="uint8")
+		vis[0:hA, 0:wA] = proj_img
+		vis[0:hB, wA:] = proj_img_next
+		plt.imshow(cv2.cvtColor(vis, cv2.COLOR_BGR2RGB))
+
+        # Plot points, lines
+		for (apoint, bpoint) in paired_points:
+
+			color = np.random.randint(0, high=255, size=(3,))
+			# Plot point in image A, left, i
+			plt.plot(apoint.x, apoint.y, 'ro')
+			ptA = (int(apoint.y), int(apoint.x))
+			# Plot point in image B, right, i+1
+			plt.plot(bpoint.x + wA, bpoint.y, 'ro')
+			ptB = (int(bpoint.y), int(bpoint.x + wA))
+
+			# Plot line between points
+			plt.plot([ptA[1], ptB[1]], [ptA[0], ptB[0]])
+
+plt.show()
+####################################################################################
