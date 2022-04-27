@@ -40,7 +40,7 @@ The first thing I do is scale input images into multiple scales: 1, 1/2, 1/4, 1/
 
 Then, I compute the Harris Corner Response for all scales of the image. Below is a image that shows the pixels of higher Harris Corner Response as red.
 
-![img](https://github.com/wayne0419/NTUVFX/blob/main/proj1/readme_material/2_compute_harris_response.png?raw=true)
+![img](https://github.com/wayne0419/NTUVFX/blob/main/proj2/readme_material/2_compute_harris_response.png?raw=true)
 
 This has to be done for every channel: R,G,B. In the end, I will get the radiance map for all three channels, and after stacking them together, I can get the HDR.
 
