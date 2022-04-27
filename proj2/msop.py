@@ -131,7 +131,7 @@ def build_descriptions(fpts, proj_grayimg):
 	for fpt in fpts:
 		center = (int(fpt.x), int(fpt.y))
 		angle = angles[fpt.y][fpt.x]
-		rmat = cv2.getRotationMatrix2D(center, -angle, scale=1)	#TODO: may be angle, no "-"
+		rmat = cv2.getRotationMatrix2D(center, -angle, scale=1)
 		rotated_image = cv2.warpAffine(image, rmat, (image.shape[1], image.shape[0]))
 		# get 40*40 patch around the fpt
 		patch = utilities.get_around_center(rotated_image, (int(fpt.y), int(fpt.x)), int(40/2))

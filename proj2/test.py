@@ -3,8 +3,8 @@ import numpy as np
 import math
 import cv2
 import utilities
-a = np.array(range(24))
-a = np.reshape(a, (12,2))
+a = np.array(range(25))
+a = np.reshape(a, (5,5))
 print(a)
 
 # rmat = cv2.getRotationMatrix2D((3,2), -90, scale=1)
@@ -25,11 +25,5 @@ print(a)
 # print(b)
 # print(c)
 
-b = np.abs(a-10)
-print(b)
-c = b < 5
-print(c)
-d = (c[:,0] & c[:,1])
-print(d)
-print(np.sum(d))
-
+a[:,1] = [0]
+print(1-a)
